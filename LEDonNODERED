@@ -1,0 +1,94 @@
+[
+    {
+        "id": "445c040d.eb1eac",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "946d0917.e5ccd8",
+        "type": "debug",
+        "z": "445c040d.eb1eac",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 540,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "402bc9b8.e10ba8",
+        "type": "twitter in",
+        "z": "445c040d.eb1eac",
+        "twitter": "",
+        "tags": "#NuevaFotoDePerfil",
+        "user": "false",
+        "name": "",
+        "inputs": 1,
+        "x": 240,
+        "y": 1200,
+        "wires": [
+            [
+                "946d0917.e5ccd8"
+            ]
+        ]
+    },
+    {
+        "id": "12f99ab9.5735f5",
+        "type": "twitter in",
+        "z": "445c040d.eb1eac",
+        "twitter": "",
+        "tags": "#NuevaFotoDePerfil",
+        "user": "false",
+        "name": "",
+        "inputs": 1,
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "b114b33.7eb965"
+            ]
+        ]
+    },
+    {
+        "id": "49e5509.0289ab",
+        "type": "rpi-gpio out",
+        "z": "445c040d.eb1eac",
+        "name": "",
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 500,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b114b33.7eb965",
+        "type": "trigger",
+        "z": "445c040d.eb1eac",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "250",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "49e5509.0289ab"
+            ]
+        ]
+    }
+]
