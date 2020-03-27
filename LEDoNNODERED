@@ -1,0 +1,227 @@
+[
+    {
+        "id": "12f99ab9.5735f5",
+        "type": "twitter in",
+        "z": "445c040d.eb1eac",
+        "twitter": "",
+        "tags": "#NuevaFotoDePerfil",
+        "user": "false",
+        "name": "",
+        "inputs": 1,
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "b114b33.7eb965"
+            ]
+        ]
+    },
+    {
+        "id": "49e5509.0289ab",
+        "type": "rpi-gpio out",
+        "z": "445c040d.eb1eac",
+        "name": "",
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 500,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b114b33.7eb965",
+        "type": "trigger",
+        "z": "445c040d.eb1eac",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "100",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "49e5509.0289ab",
+                "df0b2e13.eb8e6"
+            ]
+        ]
+    },
+    {
+        "id": "3b7b16a.6024dea",
+        "type": "inject",
+        "z": "445c040d.eb1eac",
+        "name": "decrement",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 80,
+        "y": 380,
+        "wires": [
+            [
+                "d26b00e7.28b74"
+            ]
+        ]
+    },
+    {
+        "id": "d5a8f607.29c358",
+        "type": "inject",
+        "z": "445c040d.eb1eac",
+        "name": "increment",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 80,
+        "y": 340,
+        "wires": [
+            [
+                "df0b2e13.eb8e6"
+            ]
+        ]
+    },
+    {
+        "id": "346ffab.b060f06",
+        "type": "inject",
+        "z": "445c040d.eb1eac",
+        "name": "reset",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 70,
+        "y": 420,
+        "wires": [
+            [
+                "7e1def45.2283e"
+            ]
+        ]
+    },
+    {
+        "id": "df0b2e13.eb8e6",
+        "type": "function",
+        "z": "445c040d.eb1eac",
+        "name": "msg object",
+        "func": "msg.increment = 3;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 340,
+        "wires": [
+            [
+                "86b75aef.61ec98"
+            ]
+        ]
+    },
+    {
+        "id": "7e1def45.2283e",
+        "type": "function",
+        "z": "445c040d.eb1eac",
+        "name": "msg object",
+        "func": "msg.reset = 10;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "86b75aef.61ec98"
+            ]
+        ]
+    },
+    {
+        "id": "d26b00e7.28b74",
+        "type": "function",
+        "z": "445c040d.eb1eac",
+        "name": "msg object",
+        "func": "msg.decrement = 1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "86b75aef.61ec98"
+            ]
+        ]
+    },
+    {
+        "id": "23a87320.99ecec",
+        "type": "debug",
+        "z": "445c040d.eb1eac",
+        "name": "count",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 490,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "86b75aef.61ec98",
+        "type": "counter",
+        "z": "445c040d.eb1eac",
+        "inc": "1",
+        "name": "",
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "23a87320.99ecec"
+            ],
+            [
+                "2f6ed887.7862c8"
+            ]
+        ]
+    },
+    {
+        "id": "ea8a5c9f.3fc52",
+        "type": "inject",
+        "z": "445c040d.eb1eac",
+        "name": "normal msg without control parameter",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "86b75aef.61ec98"
+            ]
+        ]
+    },
+    {
+        "id": "2f6ed887.7862c8",
+        "type": "debug",
+        "z": "445c040d.eb1eac",
+        "name": "message",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 480,
+        "y": 460,
+        "wires": []
+    }
+]
